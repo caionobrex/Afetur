@@ -99,8 +99,8 @@ const Header = () => (
 
 const BudgeCard = () => (
   <Swing>
-    <div className="mt-8 w-full p-6 shadow-lg opacity-90 rounded" style={{ backgroundColor: '#29285D' }}>
-      <h2 className="text-center font-medium text-xl uppercase text-white">Faça seu orçamento</h2>
+    <div className="budge-card mt-8 w-full p-6 shadow-lg opacity-90 rounded md:mt-16">
+      <h2 className="text-center font-medium text-xl uppercase text-white">Faça já seu orçamento</h2>
       <form className="mt-8">
         <div className="grid gap-4">
           <div>
@@ -141,6 +141,12 @@ const BudgeCard = () => (
         </button>
       </form>
     </div>
+
+    <style jsx>{`
+      .budge-card {
+        background-color: #29285D;
+      }
+    `}</style>
   </Swing>
 )
 
@@ -159,7 +165,7 @@ const HeroSection = () => (
               <span className="text-5xl md:text-7xl">Realize a sua viagem dos sonhos...</span>
             </h1>
           </Pulse>
-          <div className="flex flex-col gap-3 mt-5 md:flex-row md:items-center md:mt-6">
+          <div className="flex flex-col gap-x-3 gap-y-2 mt-5 md:flex-row md:items-center md:mt-6">
             <Pulse>
               <button className="px-5 py-2 font-medium bg-red-600 text-white rounded w-full rounded-full transition-all duration-300 md:w-auto md:rounded md:px-8 hover:bg-red-800">
                 Ver Pacotes
@@ -341,6 +347,12 @@ const Footer = () => (
   </footer>
 )
 
+const MobileNav = () => (
+  <nav className="fixed h-full top-0 left-0 bg-white w-4/5 z-90">
+    ds
+  </nav>
+)
+
 export default function Home() {
   return (
     <div className="bg-gray-100">
@@ -404,7 +416,7 @@ export default function Home() {
       <div className="pb-12 pt-48 md:pt-32">
         <Container>
           <h2 className="text-center text-3xl font-semibold text-gray-600">Pacotes Internacionais</h2>
-          <div className="grid mt-12 gap-5 md:grid-cols-3">
+          <div className="grid mt-12 gap-5 gap-y-10 md:grid-cols-3">
             <Package src="https://www.afetur.com.br/wp-content/uploads/elementor/thumbs/cancun-1-paryirqzzdb8g0c8ejwxysn47wcg0kco87u6tnylxo.jpg" />
             <Package src="https://www.afetur.com.br/wp-content/uploads/elementor/thumbs/suica-1-scaled-paryj7q97jx3xdp0t8tln6lybg5onf43yexfzdawzw.jpg" />
             <Package src="https://www.afetur.com.br/wp-content/uploads/elementor/thumbs/puntacana-scaled-paryj4wqn1t8yjt49plpxpbkjajl0bswy0yzjjf3ik.jpg" />
