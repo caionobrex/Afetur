@@ -1,14 +1,9 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import Logo from '../public/images/logo2.png'
-import Disney from '../public/images/disney-fifteens.jpg'
 import Link from 'next/link'
 import Zoom from 'react-reveal/Zoom'
 import Flip from 'react-reveal/Flip'
 import Swing from 'react-reveal/Swing'
 import Pulse from 'react-reveal/Pulse'
-import RoteriosReligiosos from '../public/images/roteiros-religiosos.png'
-import ReligionIntro from '../public/images/religion-intro.png'
 import { BsEye } from 'react-icons/bs'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { AiOutlineUser, AiFillStar } from 'react-icons/ai'
@@ -16,7 +11,8 @@ import { GoQuote } from 'react-icons/go'
 import {
   FaInstagram,
   FaYoutube,
-  FaFacebook
+  FaFacebook,
+  FaTimes
 } from 'react-icons/fa'
 import {
   HiOutlineMenu,
@@ -24,11 +20,11 @@ import {
   HiOutlinePhone,
   HiOutlineLocationMarker
 } from 'react-icons/hi'
-import { createRef, useEffect } from 'react'
+import { useState } from 'react'
 
 const Container = ({ children }) => <div className="px-6 md:px-32 2xl:px-96">{children}</div>
 
-const Header = () => {
+const Header = ({ openMobileNav }) => {
   return (
     <header className="absolute top-0 w-full">
       <div>
@@ -49,9 +45,9 @@ const Header = () => {
                 </span>
               </div>
               <ul className="flex items-center gap-3 text-xl rounded py-1 mt-2 md:mt-0">
-                <li><a target="_blank" href="https://www.facebook.com/afeturviagens" className="text-white"><FaFacebook /></a></li>
-                <li><a target="_blank" href="https://www.instagram.com/afeturturismo/" className="text-white"><FaInstagram /></a></li>
-                <li><a target="_blank" href="https://www.youtube.com/channel/UCBxGzFyOaX2I2K6aSBJJRFQ" className="text-white"><FaYoutube /></a></li>
+                <li><a target="_blank" rel="noreferrer" href="https://www.facebook.com/afeturviagens" className="text-white"><FaFacebook /></a></li>
+                <li><a target="_blank" rel="noreferrer" href="https://www.instagram.com/afeturturismo/" className="text-white"><FaInstagram /></a></li>
+                <li><a target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCBxGzFyOaX2I2K6aSBJJRFQ" className="text-white"><FaYoutube /></a></li>
               </ul>
             </div>
           </Container>
@@ -60,22 +56,24 @@ const Header = () => {
         <div className="py-4 border-b border-gray-700 w-full" style={{ transition: 'padding, 300ms, background 300ms' }}>
           <Container>
             <div className="flex justify-between items-center">
-              <Link href="/"><a className="flex items-center"><Image src={Logo} width="130px" height="60px" /></a></Link>
-              <HiOutlineMenu className="text-white text-2xl md:hidden" />
+              <Link href="/">
+                <a className="flex items-center">
+                  <img src="https://www.afetur.com.br/wp-content/uploads/2021/09/logo2.png" alt="Logo Afetur Fortaleza" width="130px" height="60px" style={{ zIndex: 999 }} />
+                </a>
+              </Link>
+              <HiOutlineMenu className="text-white text-2xl md:hidden" onClick={openMobileNav} style={{ zIndex: 999 }} />
               <nav className="hidden md:block">
                 <ul className="list flex items-center gap-6 text-white font-medium text-lg">
-                  <li><Link href="#">
-                    <a className="flex items-center">Pacotes <IoMdArrowDropdown className="ml-1" /></a></Link>
+                  <li>
+                    <a href="#" className="flex items-center">Pacotes <IoMdArrowDropdown className="ml-1" /></a>
                   </li>
-                  <li><Link href="#"><a>Quem Somos</a></Link></li>
-                  <li><Link href="#"><a>Ingressos</a></Link></li>
-                  <li><Link href="/blog"><a>Blog</a></Link></li>
-                  <li><Link href="#"><a>Fale Conosco</a></Link></li>
-                  <Link href="#">
-                    <a className="flex items-center bg-red-600 px-4 py-2 rounded transition-all duration-300 hover:bg-red-800">
-                      <AiOutlineUser className="mr-1" /> Área do Cliente
-                    </a>
-                  </Link>
+                  <li><a href="#">Quem Somos</a></li>
+                  <li><a href="#">Ingressos</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Fale Conosco</a></li>
+                  <a href="http://afetur.com.br/defaultclientes.asp" className="flex items-center bg-red-600 px-4 py-2 rounded transition-all duration-300 hover:bg-red-800">
+                    <AiOutlineUser className="mr-1" /> Área do Cliente
+                  </a>
                 </ul>
               </nav>
             </div>
@@ -106,62 +104,116 @@ const Header = () => {
   )
 }
 
-const BudgeCard = () => (
-  <Swing>
-    <div className="budge-card mt-8 w-full p-6 shadow-lg opacity-90 rounded md:mt-16">
-      <h2 className="text-center font-medium text-xl uppercase text-white">Faça já seu orçamento</h2>
-      <form className="mt-8">
-        <div className="grid gap-4">
-          <div>
-            <label className="text-white">Nome:</label>
-            <input type="text" name="Test" placeholder="Digite seu nome" className="border rounded outline-none w-full px-2 py-1" />
-          </div>
-          <div>
-            <label className="text-white">E-mail:</label>
-            <input type="text" name="Test" placeholder="Digite seu email" className="border rounded outline-none w-full px-2 py-1" />
-          </div>
-          <div>
-            <label className="text-white">Telefone:</label>
-            <input type="text" name="Test" placeholder="Digite seu telefone" className="border rounded outline-none w-full px-2 py-1" />
-          </div>
-          <div>
-            <label className="text-white">Assunto:</label>
-            <input type="text" name="Test" className="border rounded outline-none w-full px-2 py-1" />
-          </div>
-          <div>
-            <label className="text-white">Estado:</label>  
-            <input type="text" name="Test" className="border rounded outline-none w-full px-2 py-1" />
-          </div>
-          <div>
-            <label className="text-white">Cidade:</label>
-            <input type="text" name="Test" className="border rounded outline-none w-full px-2 py-1" />
-          </div>
-          <div className="row-start-3 col-span-3">
-            <label className="text-white">Bairro:</label>
-            <input type="text" name="Test" placeholder="Digite seu bairro" className="border rounded outline-none w-full px-2 py-1" />
-          </div>
-          <div className="row-start-4 col-span-3">
-            <label className="text-white">Detalhes do seu orçamento: </label>
-            <textarea className="rounded w-full px-2 py-3 outline-none" placeholder="Ex.: Origem, destino, data de ida, data de volta, quantidade de pessoas, entre outros detalhes que achar importantes."></textarea>
-          </div>
-        </div>
-        <button className="mt-4 bg-white px-4 py-2 w-full bg-red-600 text-white font-medium transition-all duration-300 rounded hover:bg-red-800">
-          Fazer Orçamento
-        </button>
-      </form>
-    </div>
+const BudgeCard = () => {
 
-    <style jsx>{`
-      .budge-card {
-        background-color: #29285D;
-      }
-    `}</style>
-  </Swing>
-)
+  const onSubmitHandle = (event) => {
+    event.preventDefault()
+    alert('Não funcionando.')
+  }
 
-const HeroSection = () => (
+  return (
+    <Swing>
+      <div className="budge-card mt-8 w-full p-6 shadow-lg opacity-90 rounded md:mt-16">
+        <h2 className="text-center font-medium text-xl uppercase text-white">Faça já seu orçamento</h2>
+        <form className="mt-8" onSubmit={onSubmitHandle}>
+          <div className="grid gap-4">
+            <div>
+              <label className="text-white">Nome:</label>
+              <input type="text" name="Test" placeholder="Digite seu nome" className="border rounded outline-none w-full px-2 py-1" />
+            </div>
+            <div>
+              <label className="text-white">E-mail:</label>
+              <input type="text" name="Test" placeholder="Digite seu email" className="border rounded outline-none w-full px-2 py-1" />
+            </div>
+            <div>
+              <label className="text-white">Telefone:</label>
+              <input type="text" name="Test" placeholder="Digite seu telefone" className="border rounded outline-none w-full px-2 py-1" />
+            </div>
+            <div>
+              <label className="text-white">Assunto:</label>
+              <select type="select" name="Test" className="border rounded outline-none w-full px-2 py-1">
+                <option disabled="disabled" selected="selected">Selecione&#8230;</option>
+                <option value="pacote">Pacote</option>
+                <option value="passagem-aerea">Passagem Aérea</option>
+                <option value="hotel">Hotel</option>
+                <option value="cruzeiro">Cruzeiro</option>
+                <option value="transfer">Transfer</option>
+                <option value="aluguel-de-carro">Aluguel de Carro</option>
+                <option value="seguro">Seguro</option>
+                <option value="city-tour">City Tour</option>
+                <option value="ingresso">Ticket/Ingresso</option>
+                <option value="viagem-de-incentivo">Viagem de Incentivo</option>
+                <option>Viagens Parceiras</option>
+                <option value="lua-de-mel">Lua de Mel</option>
+                <option value="cambio">Câmbio</option>
+                <option value="financeiro">Financeiro</option>
+                <option value="documentacao">Documentação</option>
+              </select>
+            </div>
+            <div>
+              <label className="text-white">Estado:</label>  
+              <select type="select" name="Test" className="border rounded outline-none w-full px-2 py-1">
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+                <option value="EX">Estrangeiro</option>
+              </select>
+            </div>
+            <div>
+              <label className="text-white">Cidade:</label>
+              <input type="text" name="Test" className="border rounded outline-none w-full px-2 py-1" placeholder="Digite sua cidade" />
+            </div>
+            <div className="row-start-3 col-span-3">
+              <label className="text-white">Bairro:</label>
+              <input type="text" name="Test" placeholder="Digite seu bairro" className="border rounded outline-none w-full px-2 py-1" />
+            </div>
+            <div className="row-start-4 col-span-3">
+              <label className="text-white">Detalhes do seu orçamento: </label>
+              <textarea className="rounded w-full px-2 py-3 outline-none" placeholder="Ex.: Origem, destino, data de ida, data de volta, quantidade de pessoas, entre outros detalhes que achar importantes."></textarea>
+            </div>
+          </div>
+          <button className="mt-4 bg-white px-4 py-2 w-full bg-red-600 text-white font-medium transition-all duration-300 rounded hover:bg-red-800">
+            Fazer Orçamento
+          </button>
+        </form>
+      </div>
+
+      <style jsx>{`
+        .budge-card {
+          background-color: #29285D;
+        }
+      `}</style>
+    </Swing>
+  )
+}
+
+const HeroSection = ({ openMobileNav }) => (
   <section className="hero-section relative pb-4 flex md:items-center">
-    <Header />
+    <Header openMobileNav={openMobileNav} />
 
     <Container>
       <div className="relative flex flex-col mt-40 md:flex-row md:items-center md:mt-24">
@@ -199,10 +251,11 @@ const HeroSection = () => (
           to right bottom,
           rgba(0,0,0,0.5),
           rgba(0,0,0,0.2)),
-          url('/images/bg.jpg'
+          url('https://www.afetur.com.br/wp-content/uploads/2021/07/pacotes-de-viagens-afetur-turismo-fortaleza-ceara.jpg'
         );
         background-position: center;
         background-repeat: no-repeat;
+        background-size: cover;
         min-height: 85vh;
       }
 
@@ -222,9 +275,9 @@ const TestimonialCard = () => (
     <div className="relative flex flex-col items-center text-center bg-gray-100 bg-opacity-80 rounded-lg px-12 py-8">
       <GoQuote className="text-4xl text-gray-400" />
       <p className="text-gray-700 mt-6">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        Já fiz três viagens com a Afetur. É irrepreensível o tratamento e a responsabilidade dos guias,
+        médicos que acompanham e todo o staff da empresa.
+        Parabéns amigos já estou me programando para próxima viagem.
       </p>
       <div className="flex items-center gap-2 text-xl mt-5">
         <AiFillStar className="text-yellow-400" />
@@ -234,10 +287,10 @@ const TestimonialCard = () => (
         <AiFillStar className="text-yellow-400" />
       </div>
       
-      <div className="absolute bottom-0">
-        <div className="flex flex-col">
-          {/* <Image src="https://www.afetur.com.br/wp-content/uploads/2021/07/jose-nelson-carrozzinho-filho-200x200-1.jpg" width="100%" height="100%" className="rounded-full" /> */}
-          {/* <span>Name</span> */}
+      <div className="mt-6">
+        <div className="flex flex-col items-center">
+          <img src="https://www.afetur.com.br/wp-content/uploads/2021/07/jose-nelson-carrozzinho-filho-200x200-1.jpg" width="70px" height="70px" className="rounded-full" />
+          <span className="font-medium text-gray-600 mt-2">José Nelson Carrozzino Filho</span>
         </div>
       </div>
     </div>
@@ -245,15 +298,11 @@ const TestimonialCard = () => (
 )
 
 const TestimonialSection = () => {
-  const ref = createRef()
-
-  useEffect(() => {}, [])
-
   return (
     <section className="testimonial-section flex items-center py-28">
 
       <Container>
-        <div className="grid md:grid-cols-3 gap-6" ref={ref}>
+        <div className="grid gap-6 md:grid-cols-3">
           <TestimonialCard />
           <TestimonialCard />
           <TestimonialCard />
@@ -262,10 +311,17 @@ const TestimonialSection = () => {
 
       <style jsx>{`
         .testimonial-section {
-          background-image: url('/images/testimonial.jpg');
-          background-position: center;
+          background-image: url('https://www.afetur.com.br/wp-content/uploads/2021/07/depoimentos.jpg');
+          background-size: cover;
+          background-position: top center;
           background-repeat: no-repeat;
           min-height: 600px;
+        }
+
+        @media only screen and (min-width: 768px) {
+          .testimonial-section {
+            background-position: center center;
+          }
         }
       `}</style>
     </section>
@@ -279,23 +335,38 @@ const BlogPostCard = () => (
 )
 
 const BlogSection = () => (
-  <section className="py-16">
+  <section className="py-8">
     <Container>
       <div className="grid gap-2 md:grid-rows-4 md:grid-cols-4">
-        <div className="relative rounded md:row-span-4 md:col-span-2 py-56">
-          <Image src="https://www.afetur.com.br/wp-content/uploads/2021/07/post-blog4.jpg" layout="fill" objectFit="cover" className="rounded" />
+        <div className="relative rounded md:row-span-4 md:col-span-2">
+          <img src="https://www.afetur.com.br/wp-content/uploads/2021/07/post-blog4.jpg" alt="Blog Post" className="rounded h-full" />
+          <div className="absolute flex items-end top-0 w-full h-full bg-black bg-opacity-30 text-white">
+            <h3></h3>
+          </div>
         </div>
-        <div className="rounded relative md:row-span-2">
-          <Image src="https://www.afetur.com.br/wp-content/uploads/2021/07/familia1.jpeg" layout="fill" objectFit="cover" className="rounded" />
+        <div className="relative rounded relative md:row-span-2">
+          <img src="https://www.afetur.com.br/wp-content/uploads/2021/07/familia1.jpeg" alt="Blog Post" className="rounded" />
+          <div className="absolute flex items-end top-0 w-full h-full bg-black bg-opacity-30 text-white">
+            <h3></h3>
+          </div>
         </div>
-        <div className="rounded relative md:row-span-2">
-          <Image src="https://www.afetur.com.br/wp-content/uploads/2021/07/familia1.jpeg" layout="fill" objectFit="cover" className="rounded" />
+        <div className="relative rounded relative md:row-span-2">
+          <img src="https://www.afetur.com.br/wp-content/uploads/2021/07/familia1.jpeg" alt="Blog Post" className="rounded" />
+          <div className="absolute flex items-end top-0 w-full h-full bg-black bg-opacity-30 text-white">
+            <h3></h3>
+          </div>
         </div>
-        <div className="rounded relative md:row-span-2">
-          <Image src="https://www.afetur.com.br/wp-content/uploads/2021/07/familia1.jpeg" layout="fill" objectFit="cover" className="rounded" />
+        <div className="relative rounded relative md:row-span-2">
+          <img src="https://www.afetur.com.br/wp-content/uploads/2021/07/familia1.jpeg" alt="Blog Post" className="rounded" />
+          <div className="absolute flex items-end top-0 w-full h-full bg-black bg-opacity-30 text-white">
+            <h3></h3>
+          </div>
         </div>
-        <div className="rounded relative md:row-span-2">
-          <Image src="https://www.afetur.com.br/wp-content/uploads/2021/07/familia1.jpeg" layout="fill" objectFit="cover" className="rounded" />
+        <div className="relative rounded relative md:row-span-2">
+          <img src="https://www.afetur.com.br/wp-content/uploads/2021/07/familia1.jpeg" alt="Blog Post" className="rounded" />
+          <div className="absolute flex items-end top-0 w-full h-full bg-black bg-opacity-30 text-white">
+            <h3></h3>
+          </div>
         </div>
       </div>
     </Container>
@@ -305,8 +376,8 @@ const BlogSection = () => (
 const Package = ({ src }) => (
   <div>
     <Zoom>
-      <div className="relative py-32">
-        <Image src={src} layout="fill" className="transition-all hover:opacity-80" />
+      <div>
+        <img src={src} className="transition-all hover:opacity-80" />
       </div>
         <div className="flex flex-col items-center mt-2">
           <h3 className="text-center font-bold text-xl mt-3" style={{ color: '#07218B' }}>
@@ -332,57 +403,113 @@ const Footer = () => (
         <div className="grid gap-5 md:grid-cols-3 md:gap-8">
           <div>
             <h3 className="font-medium text-lg">Fale Conosco</h3>
-            <ul>
-              <li>Link 1</li>
+            <ul className="flex flex-col gap-2 mt-2 text-gray-300 md:mt-4">
+              <li className="flex items-center">
+                <HiOutlinePhone className="mr-1 text-lg" /> (85) 99976-5157
+              </li>
+              <li className="flex items-center">
+                <HiOutlineMail className="mr-1 text-lg" /> contato@afetur.com.br
+              </li>
+              <li className="flex items-center">
+                <HiOutlineLocationMarker className="mr-1 text-lg" /> Rua General Tertuliano Potiguara, 1064
+              </li>
             </ul>
           </div>
           <div>
             <h3 className="font-medium text-lg">Novidades</h3>
-            <ul>
-              <li>Link 1</li>
+            <ul className="flex flex-col gap-2 mt-2 text-gray-300 md:mt-4">
+              <li><a href="#">Viagem da Amizade</a></li>
+              <li><a href="#">Disney Fifteens</a></li>
             </ul>
           </div>
           <div>
             <h3 className="font-medium text-lg">Sobre</h3>
-            <ul>
-              <li>Link 1</li>
+            <ul className="mt-2 text-gray-300 md:mt-4">
+              <li><a href="#">Quem somos</a></li>
             </ul>
           </div>
         </div>
         <div>
           <h3 className="font-medium text-lg">Compartilhe</h3>
-          <ul className="flex gap-3 mt-2">
-            <li><a target="_blank" href="#"><FaFacebook className="text-2xl" /></a></li>
-            <li><a target="_blank" href="#"><FaInstagram className="text-2xl" /></a></li>
+          <ul className="flex flex-col gap-2 mt-2 text-gray-300 md:mt-4">
+            <li>
+              <a target="_blank" rel="noreferrer" href="https://www.facebook.com/afeturviagens" className="flex items-center gap-2">
+                <FaFacebook className="text-xl text-white" /> Facebook
+              </a>
+            </li>
+            <li>
+              <a target="_blank" rel="noreferrer" href="https://www.instagram.com/afeturturismo/" className="flex items-center gap-2">
+                <FaInstagram className="text-xl text-white" /> Instagram
+              </a>
+            </li>
+            <li>
+              <a target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCBxGzFyOaX2I2K6aSBJJRFQ" className="flex items-center gap-2">
+                <FaYoutube className="text-xl text-white" /> Youtube
+              </a>
+            </li>
           </ul>
         </div>
       </div>
 
       <div className="mt-12">
         <hr />
-        <div className="mt-6 text-white">
-          © Todos os direitos reservados por Afetur Turismo
+        <div className="flex flex-col justify-between gap-2 text-gray-300 text-sm mt-6 md:flex-row">
+          <span>© Todos os direitos reservados por Afetur Turismo</span>
+          <span>Desenvolvido com ❤ por David Magalhães</span>
         </div>
       </div>
     </Container>
 
     <style jsx>{`
       .footer {
-        background-image: url('/images/bg-footer.jpg');
+        background-image: url('https://www.afetur.com.br/wp-content/uploads/2021/07/bg-footer.jpg');
         background-position: center;
         background-repeat: no-repeat;
+        background-size: cover;
       }
     `}</style>
   </footer>
 )
 
-const MobileNav = () => (
-  <nav className="fixed h-full top-0 left-0 bg-white w-4/5 z-90">
-    ds
+const MobileNav = ({ closeMobileNav }) => (
+  <nav className="fixed h-full top-0 left-0 w-4/5 bg-gray-50" onClick={closeMobileNav}>
+    <FaTimes className="absolute top-0 right-0 text-gray-700 text-xl" />
+
+    <a href="http://afetur.com.br/defaultclientes.asp" className="flex items-center bg-red-600 px-4 py-2 rounded transition-all duration-300 text-white m-4 mt-10 hover:bg-red-800">
+      <AiOutlineUser className="mr-1" /> Área do Cliente
+    </a>
+
+    <ul className="flex flex-col gap-3 font-medium mt-4">
+      <li className="px-4">
+        <a href="#" className="flex items-center">Pacotes</a>
+      </li>
+      <li className="px-4"><a href="#">Quem Somos</a></li>
+      <li className="px-4"><a href="#">Ingressos</a></li>
+      <li className="px-4"><a href="#">Blog</a></li>
+      <li className="px-4"><a href="#">Fale Conosco</a></li>
+    </ul>
+    
+    <style jsx>{`
+      nav {
+        z-index: 1000;
+      }
+    `}</style>
   </nav>
 )
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const openMobileNav = () => {
+    document.body.style.overflowY = 'hidden'
+    setIsOpen(true)
+  }
+
+  const closeMobileNav = () => {
+    document.body.style.overflowY = 'auto'
+    setIsOpen(false)
+  }
+
   return (
     <div className="bg-gray-100">
       <Head>
@@ -391,8 +518,10 @@ export default function Home() {
         <script src='https://llwhatsapp.blob.core.windows.net/whatschat-scripts/whatschat-42032d6f97ad481ca590d5ebfc45102a.js'></script>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      
+      {isOpen && <MobileNav closeMobileNav={closeMobileNav} />}
 
-      <HeroSection />
+      <HeroSection openMobileNav={openMobileNav} />
 
       <div className="py-12">
         <Container>
@@ -417,14 +546,14 @@ export default function Home() {
                 com o sonho e com as expectativas de toda a família. É um ano de preparação e ansiedade que
                 cercam essa incrível viagem.
               </p>
-              <button className="rounded-full bg-white px-4 py-1 mt-8 text-pink-500 uppercase">
+              <button className="w-full rounded bg-white px-5 py-2 mt-8 text-pink-500 font-semibold uppercase md:w-auto">
                 Saiba Mais
               </button>
             </div>
             <div className="col relative">
               <div className="absolute">
                 <Zoom>
-                  <Image src={Disney} alt="Disney Fifteens" />
+                  <img src="https://www.afetur.com.br/wp-content/uploads/2021/07/disney-fifteens-viagem-para-disney-afetur-turismo.jpg" alt="Disney Fifteens" />
                 </Zoom>
               </div>
             </div>
@@ -433,9 +562,10 @@ export default function Home() {
 
         <style jsx>{`
           .disney {
-            background-image: url('/images/bg-disney.jpg');
+            background-image: url('https://www.afetur.com.br/wp-content/uploads/2021/07/bg-disney.jpg');
             background-position: center;
             background-repeat: no-repeat;
+            background-size: cover;
           }
 
           .col { flex-basis: 100%; }
@@ -461,8 +591,8 @@ export default function Home() {
                 ROTEIROS RELIGIOSOS
               </h2>
               <div>
-                <a href="https://agenciaafetur.com.br/roteirosreligiosos/index.php" target="_blank">
-                  <Image src={RoteriosReligiosos} width="200px" height="100px" />
+                <a href="https://agenciaafetur.com.br/roteirosreligiosos/index.php" target="_blank" rel="noreferrer">
+                  <img src="https://www.afetur.com.br/wp-content/uploads/2021/09/roteiros-religiosos-logo.png" alt="Logo Da Roteiros Religiosos" width="200px" height="100px" />
                 </a>
               </div>
             </div>
@@ -470,20 +600,21 @@ export default function Home() {
           <div className="flex flex-col mt-12 gap-y-6 md:gap-4 md:gap-0 md:flex-row md:items-center">
             <div className="col">
               <Zoom left>
-                <Image src={ReligionIntro} />
+                <img src="https://www.afetur.com.br/wp-content/uploads/2021/09/roteiros-religiosos-intro.png" alt="Camelos Nuvens Passaros" />
               </Zoom>
             </div>
             <div className="col">
               <Zoom right>
                 <div>
                   <h3 className="text-4xl font-bold mb-4">O que é ?</h3>
-                  <p>
+                  <p className="text-justify">
                     É uma iniciativa da agência de viagens Afetur, uma agência especializada em viagens em grupo, e neste projeto a agência cria roteiros de viagens
                     religiosas com o objetivo de levar pessoas do Brasil para visitarem lugares históricos voltados ao público religioso.
                   </p>
                   <a
                     href="https://agenciaafetur.com.br/roteirosreligiosos/index.php"
                     target="_blank"
+                    rel="noreferrer"
                     className="w-full text-white mt-6 rounded px-6 py-3 inline-block uppercase font-semibold text-center md:w-auto"
                   >
                     Saiba Mais
@@ -501,7 +632,8 @@ export default function Home() {
               rgba(0,0,0,0.8),
               rgba(0,0,0,0.8)
             ),
-            url(/images/bg-religion.jpg);
+            url('https://www.afetur.com.br/wp-content/uploads/2021/09/bg-religion.jpg');
+            background-size: cover;
           }
           .religion h2 {
             background-image: linear-gradient(to right, #8d4fff, #8d4fff, #fa9e1b, #fa9e1b, #8d4fff, #8d4fff);
@@ -545,9 +677,9 @@ export default function Home() {
         `}</style>
       </div>
 
-      <TestimonialSection />
-
       <BlogSection />
+
+      <TestimonialSection />
 
       <Footer />
     </div>
