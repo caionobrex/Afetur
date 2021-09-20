@@ -26,7 +26,7 @@ export default function Pacotes({ pacotes }) {
           </div>
 
           <div className="flex-1 py-12">
-            <ul className="grid gap-x-3 gap-y-12 md:grid-cols-3 md:px-4">
+            <ul className="grid gap-x-2 gap-y-12 md:grid-cols-3 md:px-4">
               <li>
                 <Package src="https://www.afetur.com.br/wp-content/uploads/elementor/thumbs/maldivas-2-paryiybvb7k8pa2oc4rby8zcdlg0ig2sl4el6louq4.jpg" />
               </li>
@@ -60,7 +60,7 @@ export default function Pacotes({ pacotes }) {
       </Container>
       <style jsx>{`
         .first-col {
-          flex: 0 1 15%;
+          flex: 0 1 20%;
         }
       `}</style>
     </Layout>
