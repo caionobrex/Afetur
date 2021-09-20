@@ -4,6 +4,12 @@ const pacoteSchema = new mongoose.Schema({
   name: { type: String, required: true },
   slug: { type: String, required: true },
   price: { type: Number, required: true },
+  currency: {
+    type: String,
+    enum: ['real', 'dollar', 'euro'],
+    required: true
+  },
+  days: Number,
   image: String,
   bgImage: String,
   description: String,

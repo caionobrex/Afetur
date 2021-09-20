@@ -5,11 +5,28 @@ import Package from "../../components/package"
 export default function Pacotes({ pacotes }) {
   return (
     <Layout>
-        <div className="flex gap-4 px-4 md:px-8">
-          <div className="hidden first-col min-h-screen py-8 border-r md:block">
+      <Container>
+        <div className="flex gap-2">
+          <div className="hidden first-col min-h-screen py-12 border-r flex-col gap-y-4 md:flex md:px-4">
+            <div>
+              <h3 className="text-gray-700 font-medium">Categorias</h3>
+              <select className="w-full border mt-1">
+                <option>cat 1</option>
+                <option>cat 2</option>
+                <option>cat 3</option>
+                <option>cat 4</option>
+              </select>
+            </div>
+            <div>
+              <h3 className="text-gray-700 font-medium">Preço</h3>
+            </div>
+            <div>
+              <h3 className="text-gray-700 font-medium">Tags</h3>
+            </div>
           </div>
-          <div className="flex-1 py-8">
-            <ul className="grid gap-3 gap-y-8 md:grid-cols-3">
+
+          <div className="flex-1 py-12">
+            <ul className="grid gap-x-3 gap-y-12 md:grid-cols-3 md:px-4">
               <li>
                 <Package src="https://www.afetur.com.br/wp-content/uploads/elementor/thumbs/maldivas-2-paryiybvb7k8pa2oc4rby8zcdlg0ig2sl4el6louq4.jpg" />
               </li>
@@ -40,9 +57,10 @@ export default function Pacotes({ pacotes }) {
             </ul>
           </div>
         </div>
+      </Container>
       <style jsx>{`
         .first-col {
-          flex: 0 1 20%;
+          flex: 0 1 15%;
         }
       `}</style>
     </Layout>
@@ -50,9 +68,9 @@ export default function Pacotes({ pacotes }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:3000/api/pacotes')
-  const pacotes = await res.json()
-  return {
-    props: { pacotes }
-  }
+  const [pacotes, categories] = await Promise.all([
+    (await fetch('http://localhost:3000/api/pacotes')).json(),
+    (await fetch('http://localhost:3000/api/categories')).json()
+  ])
+  return { props: { pacotes, categories } }
 }

@@ -8,7 +8,11 @@ export default function AdminLogin() {
   if (session) return router.push('/admin')
 
   return (
-    <div className="h-screen flex justify-center items-center px-5">
+    <div className="h-screen flex flex-col justify-center items-center px-5 gap-y-10" style={{ backgroundColor: '#29285d' }}>
+      <div>
+        <img src="https://www.afetur.com.br/wp-content/uploads/2021/09/logo2.png" alt="Logo Afetur Fortaleza" height="80px" style={{ zIndex: 999 }} />
+      </div>
+
       <Formik
         initialValues={{ user: '', pass: '' }}
         onSubmit={(values) => {
@@ -47,7 +51,7 @@ export default function AdminLogin() {
                 onBlur={handleBlur}
               />
             </div>
-            <button type="submit" className="bg-blue-200 block w-full mt-6">
+            <button type="submit" className="bg-blue-900 block w-full mt-6 text-white">
               Login
             </button>
           </form>

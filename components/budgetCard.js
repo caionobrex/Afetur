@@ -7,13 +7,26 @@ export default function BudgeCard() {
     alert('Não funcionando.')
   }
 
+  const validate = (values) => {}
+
   return (
     <Swing>
       <div className="budge-card mt-8 w-full p-6 shadow-lg opacity-90 rounded md:mt-16">
-        <h2 className="text-center font-medium text-xl uppercase text-white">Faça já seu orçamento</h2>
+        <h2 className="text-center font-medium text-xl uppercase text-white">
+          Faça já seu orçamento
+        </h2>
         <Formik
-          initialValues={{}}
-          validate={() => { }}
+          initialValues={{
+            name: '',
+            email: '',
+            phone: '',
+            subject: '',
+            state: '',
+            city: '',
+            neighbor: '',
+            details: ''
+          }}
+          validate={validate}
           onSubmit={onSubmitHandle}
         >
           {({

@@ -431,7 +431,7 @@ export default function Home({ test }) {
             <div className="col">
               <Zoom right>
                 <div>
-                  <h3 className="text-4xl font-bold mb-4">O que é ?</h3>
+                  <h3 className="text-4xl text-center font-bold mb-4 md:text-left">O que é ?</h3>
                   <p className="text-justify">
                     É uma iniciativa da agência de viagens Afetur, uma agência especializada em viagens em grupo, e neste projeto a agência cria roteiros de viagens
                     religiosas com o objetivo de levar pessoas do Brasil para visitarem lugares históricos voltados ao público religioso.

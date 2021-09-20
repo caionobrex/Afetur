@@ -1,4 +1,6 @@
 import Container from './container'
+import { HiOutlinePhone, HiOutlineMail, HiOutlineLocationMarker } from 'react-icons/hi'
+import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
 
 export default function TopBar() {
   return (
