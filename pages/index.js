@@ -2,8 +2,9 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Zoom from 'react-reveal/Zoom'
 import Flip from 'react-reveal/Flip'
-import Swing from 'react-reveal/Swing'
 import Pulse from 'react-reveal/Pulse'
+import BudgeCard from '../components/budgetCard'
+import Footer from '../components/footer'
 import { BsEye } from 'react-icons/bs'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { AiOutlineUser, AiFillStar } from 'react-icons/ai'
@@ -67,9 +68,9 @@ const Header = ({ openMobileNav }) => {
                   <li>
                     <a href="#" className="flex items-center">Pacotes <IoMdArrowDropdown className="ml-1" /></a>
                   </li>
-                  <li><a href="#">Quem Somos</a></li>
+                  <li><Link href="/quem-somos"><a href="#">Quem Somos</a></Link></li>
                   <li><a href="#">Ingressos</a></li>
-                  <li><a href="#">Blog</a></li>
+                  <li><Link href="/blog"><a>Blog</a></Link></li>
                   <li><a href="#">Fale Conosco</a></li>
                   <a href="http://afetur.com.br/defaultclientes.asp" className="flex items-center bg-red-600 px-4 py-2 rounded transition-all duration-300 hover:bg-red-800">
                     <AiOutlineUser className="mr-1" /> Área do Cliente
@@ -104,113 +105,6 @@ const Header = ({ openMobileNav }) => {
   )
 }
 
-const BudgeCard = () => {
-
-  const onSubmitHandle = (event) => {
-    event.preventDefault()
-    alert('Não funcionando.')
-  }
-
-  return (
-    <Swing>
-      <div className="budge-card mt-8 w-full p-6 shadow-lg opacity-90 rounded md:mt-16">
-        <h2 className="text-center font-medium text-xl uppercase text-white">Faça já seu orçamento</h2>
-        <form className="mt-8" onSubmit={onSubmitHandle}>
-          <div className="grid gap-4">
-            <div>
-              <label className="text-white">Nome:</label>
-              <input type="text" name="Test" placeholder="Digite seu nome" className="border rounded outline-none w-full px-2 py-1" />
-            </div>
-            <div>
-              <label className="text-white">E-mail:</label>
-              <input type="text" name="Test" placeholder="Digite seu email" className="border rounded outline-none w-full px-2 py-1" />
-            </div>
-            <div>
-              <label className="text-white">Telefone:</label>
-              <input type="text" name="Test" placeholder="Digite seu telefone" className="border rounded outline-none w-full px-2 py-1" />
-            </div>
-            <div>
-              <label className="text-white">Assunto:</label>
-              <select type="select" name="Test" className="border rounded outline-none w-full px-2 py-1">
-                <option disabled="disabled" selected="selected">Selecione&#8230;</option>
-                <option value="pacote">Pacote</option>
-                <option value="passagem-aerea">Passagem Aérea</option>
-                <option value="hotel">Hotel</option>
-                <option value="cruzeiro">Cruzeiro</option>
-                <option value="transfer">Transfer</option>
-                <option value="aluguel-de-carro">Aluguel de Carro</option>
-                <option value="seguro">Seguro</option>
-                <option value="city-tour">City Tour</option>
-                <option value="ingresso">Ticket/Ingresso</option>
-                <option value="viagem-de-incentivo">Viagem de Incentivo</option>
-                <option>Viagens Parceiras</option>
-                <option value="lua-de-mel">Lua de Mel</option>
-                <option value="cambio">Câmbio</option>
-                <option value="financeiro">Financeiro</option>
-                <option value="documentacao">Documentação</option>
-              </select>
-            </div>
-            <div>
-              <label className="text-white">Estado:</label>  
-              <select type="select" name="Test" className="border rounded outline-none w-full px-2 py-1">
-                <option value="AC">Acre</option>
-                <option value="AL">Alagoas</option>
-                <option value="AP">Amapá</option>
-                <option value="AM">Amazonas</option>
-                <option value="BA">Bahia</option>
-                <option value="CE">Ceará</option>
-                <option value="DF">Distrito Federal</option>
-                <option value="ES">Espírito Santo</option>
-                <option value="GO">Goiás</option>
-                <option value="MA">Maranhão</option>
-                <option value="MT">Mato Grosso</option>
-                <option value="MS">Mato Grosso do Sul</option>
-                <option value="MG">Minas Gerais</option>
-                <option value="PA">Pará</option>
-                <option value="PB">Paraíba</option>
-                <option value="PR">Paraná</option>
-                <option value="PE">Pernambuco</option>
-                <option value="PI">Piauí</option>
-                <option value="RJ">Rio de Janeiro</option>
-                <option value="RN">Rio Grande do Norte</option>
-                <option value="RS">Rio Grande do Sul</option>
-                <option value="RO">Rondônia</option>
-                <option value="RR">Roraima</option>
-                <option value="SC">Santa Catarina</option>
-                <option value="SP">São Paulo</option>
-                <option value="SE">Sergipe</option>
-                <option value="TO">Tocantins</option>
-                <option value="EX">Estrangeiro</option>
-              </select>
-            </div>
-            <div>
-              <label className="text-white">Cidade:</label>
-              <input type="text" name="Test" className="border rounded outline-none w-full px-2 py-1" placeholder="Digite sua cidade" />
-            </div>
-            <div className="row-start-3 col-span-3">
-              <label className="text-white">Bairro:</label>
-              <input type="text" name="Test" placeholder="Digite seu bairro" className="border rounded outline-none w-full px-2 py-1" />
-            </div>
-            <div className="row-start-4 col-span-3">
-              <label className="text-white">Detalhes do seu orçamento: </label>
-              <textarea className="rounded w-full px-2 py-3 outline-none" placeholder="Ex.: Origem, destino, data de ida, data de volta, quantidade de pessoas, entre outros detalhes que achar importantes."></textarea>
-            </div>
-          </div>
-          <button className="mt-4 bg-white px-4 py-2 w-full bg-red-600 text-white font-medium transition-all duration-300 rounded hover:bg-red-800">
-            Fazer Orçamento
-          </button>
-        </form>
-      </div>
-
-      <style jsx>{`
-        .budge-card {
-          background-color: #29285D;
-        }
-      `}</style>
-    </Swing>
-  )
-}
-
 const HeroSection = ({ openMobileNav }) => (
   <section className="hero-section relative pb-4 flex md:items-center">
     <Header openMobileNav={openMobileNav} />
@@ -228,14 +122,18 @@ const HeroSection = ({ openMobileNav }) => (
           </Pulse>
           <div className="flex flex-col gap-x-3 gap-y-2 mt-5 md:flex-row md:items-center md:mt-6">
             <Pulse>
-              <button className="px-5 py-2 font-medium bg-red-600 text-white rounded w-full rounded-full transition-all duration-300 md:w-auto md:rounded md:px-8 hover:bg-red-800">
-                Ver Pacotes
-              </button>
+              <Link href="/pacotes">
+                <a className="px-5 py-2 font-medium bg-red-600 text-white rounded w-full block flex justify-center items-center rounded-full transition-all duration-300 md:w-auto md:rounded md:px-8 hover:bg-red-800">
+                  Ver Pacotes
+                </a>
+              </Link>
             </Pulse>
             <Pulse>
-              <button className="bg-white px-5 py-2 font-medium text-gray-700 rounded w-full rounded-full transition-all duration-300 md:w-auto md:rounded hover:bg-gray-300">
-                Quem Somos ?
-              </button>
+              <Link href="/quem-somos">
+                <a className="bg-white px-5 py-2 font-medium text-gray-700 rounded w-full block flex justify-center items-center rounded-full transition-all duration-300 md:w-auto md:rounded hover:bg-gray-300">
+                  Quem Somos ?
+                </a>
+              </Link>
             </Pulse>
           </div>
         </div>
@@ -388,87 +286,14 @@ const Package = ({ src }) => (
             <span className="block font-bold text-2xl" style={{ color: '#07218B' }}>2.029€</span>
             <span className="block">9 diárias</span>
           </div>
-          <button className="mt-5 rounded-full px-5 py-2 text-white flex items-center text-sm" style={{ backgroundColor: '#181E84' }}>
-            <BsEye className="mr-2" /> Ver pacote
-          </button>
+          <Link href="/pacotes/sd">
+            <a className="mt-5 rounded-full px-5 py-2 text-white flex items-center text-sm" style={{ backgroundColor: '#181E84' }}>
+              <BsEye className="mr-2" /> Ver pacote
+            </a>
+          </Link>
         </div>
     </Zoom>
   </div>
-)
-
-const Footer = () => (
-  <footer className="footer py-20">
-    <Container>
-      <div className="flex flex-col gap-6 text-white md:flex-row">
-        <div className="grid gap-5 md:grid-cols-3 md:gap-8">
-          <div>
-            <h3 className="font-medium text-lg">Fale Conosco</h3>
-            <ul className="flex flex-col gap-2 mt-2 text-gray-300 md:mt-4">
-              <li className="flex items-center">
-                <HiOutlinePhone className="mr-1 text-lg" /> (85) 99976-5157
-              </li>
-              <li className="flex items-center">
-                <HiOutlineMail className="mr-1 text-lg" /> contato@afetur.com.br
-              </li>
-              <li className="flex items-center">
-                <HiOutlineLocationMarker className="mr-1 text-lg" /> Rua General Tertuliano Potiguara, 1064
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-medium text-lg">Novidades</h3>
-            <ul className="flex flex-col gap-2 mt-2 text-gray-300 md:mt-4">
-              <li><a href="#">Viagem da Amizade</a></li>
-              <li><a href="#">Disney Fifteens</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-medium text-lg">Sobre</h3>
-            <ul className="mt-2 text-gray-300 md:mt-4">
-              <li><a href="#">Quem somos</a></li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <h3 className="font-medium text-lg">Compartilhe</h3>
-          <ul className="flex flex-col gap-2 mt-2 text-gray-300 md:mt-4">
-            <li>
-              <a target="_blank" rel="noreferrer" href="https://www.facebook.com/afeturviagens" className="flex items-center gap-2">
-                <FaFacebook className="text-xl text-white" /> Facebook
-              </a>
-            </li>
-            <li>
-              <a target="_blank" rel="noreferrer" href="https://www.instagram.com/afeturturismo/" className="flex items-center gap-2">
-                <FaInstagram className="text-xl text-white" /> Instagram
-              </a>
-            </li>
-            <li>
-              <a target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCBxGzFyOaX2I2K6aSBJJRFQ" className="flex items-center gap-2">
-                <FaYoutube className="text-xl text-white" /> Youtube
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="mt-12">
-        <hr />
-        <div className="flex flex-col justify-between gap-2 text-gray-300 text-sm mt-6 md:flex-row">
-          <span>© Todos os direitos reservados por Afetur Turismo</span>
-          <span>Desenvolvido com ❤ por David Magalhães</span>
-        </div>
-      </div>
-    </Container>
-
-    <style jsx>{`
-      .footer {
-        background-image: url('https://www.afetur.com.br/wp-content/uploads/2021/07/bg-footer.jpg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-    `}</style>
-  </footer>
 )
 
 const MobileNav = ({ closeMobileNav }) => (
@@ -497,7 +322,7 @@ const MobileNav = ({ closeMobileNav }) => (
   </nav>
 )
 
-export default function Home() {
+export default function Home({ test }) {
   const [isOpen, setIsOpen] = useState(false)
 
   const openMobileNav = () => {
@@ -684,4 +509,10 @@ export default function Home() {
       <Footer />
     </div>
   )
+}
+
+export function getStaticProps() {
+  return {
+    props: { test: 'test' }
+  }
 }
