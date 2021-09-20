@@ -5,4 +5,4 @@ const tagSchema = new mongoose.Schema({
   slug: { type: String, required: true }
 }, { timestamps: true })
 
-export default mongoose.model('Tag', tagSchema)
+export default mongoose.models.Tag || mongoose.model('Tag', tagSchema)
