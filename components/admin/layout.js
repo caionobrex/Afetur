@@ -47,6 +47,7 @@ export default function AdminLayout({ children }) {
       <header className="header flex justify-between items-center text-white px-4 py-2">
         <Link href="/admin/"><a><BiHome className="text-xl" /></a></Link>
         <div>
+          username
           <img />
         </div>
       </header>

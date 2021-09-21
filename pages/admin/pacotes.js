@@ -24,10 +24,11 @@ export default function AdminPacotes() {
           <table className="w-full">
             <thead className="w-full">
               <tr>
-                <th className="text-gray-700 text-left">User</th>
-                <th className="text-gray-700 text-left">Email</th>
-                <th className="text-gray-700 text-left">Função</th>
-                <th className="text-gray-700 text-center">Posts</th>
+                <th className="text-gray-700 text-left">Name</th>
+                <th className="text-gray-700 text-left">Price</th>
+                <th className="text-gray-700 text-left">Currency</th>
+                <th className="text-gray-700 text-center">Days</th>
+                <th className="text-gray-700 text-center">Tags</th>
               </tr>
             </thead>
             <tbody>

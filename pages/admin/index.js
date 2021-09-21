@@ -16,7 +16,6 @@ export default function AdminDashBoard() {
   return (
     <AdminLayout>
       <div>
-        Main admin
       </div>
     </AdminLayout>
   )

@@ -8,9 +8,9 @@ export default function AdminLogin() {
   if (session) return router.push('/admin')
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center px-5 gap-y-10" style={{ backgroundColor: '#29285d' }}>
+    <div className="h-screen flex flex-col justify-center items-center px-5 gap-y-12" style={{ backgroundColor: '#29285d' }}>
       <div>
-        <img src="https://www.afetur.com.br/wp-content/uploads/2021/09/logo2.png" alt="Logo Afetur Fortaleza" height="80px" style={{ zIndex: 999 }} />
+        <img src="https://www.afetur.com.br/wp-content/uploads/2021/09/logo2.png" alt="Logo Afetur Fortaleza" style={{ zIndex: 999 }} />
       </div>
 
       <Formik

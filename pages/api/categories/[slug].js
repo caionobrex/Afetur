@@ -1,5 +1,6 @@
 import connectDB from '../../../middlewares/connectDB'
 import Category from '../../../models/Category'
+import Post from '../../../models/Post'
 import { getSession } from 'next-auth/client'
 
 const handler = async (req, res) => {
@@ -11,7 +12,9 @@ const handler = async (req, res) => {
     await Category.updateOne({ slug }, {})
     res.end()
   } else if (req.method === 'DELETE') {
+    const category = await Category.findOne({ slug })
     await Category.deleteOne({ slug })
+    await Post.updateMany({ category: category._id }, { category: null })
     res.end()
   }
 }

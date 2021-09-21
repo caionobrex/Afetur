@@ -13,6 +13,7 @@ const pacoteSchema = new mongoose.Schema({
   image: String,
   bgImage: String,
   description: String,
+  destination: String,
   author: { type: mongoose.SchemaTypes.ObjectId, ref: 'User' },
   category: { type: mongoose.SchemaTypes.ObjectId, ref: 'Category' },
   tags: [ { type: mongoose.SchemaTypes.ObjectId, ref: 'Tag' } ]

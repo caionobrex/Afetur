@@ -4,7 +4,7 @@ const categorySchema = new mongoose.Schema({
   name: { type: String, required: true },
   slug: { type: String, required: true },
   description: String,
-  subCategories: [ { type: mongoose.SchemaTypes.ObjectId, ref: 'Category' } ]
+  type: { type: String, enum: ['post', 'pacote'] }
 }, { timestamps: true })
 
 export default mongoose.models.Category || mongoose.model('Category', categorySchema)

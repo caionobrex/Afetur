@@ -25,9 +25,11 @@ export default function AdminPosts() {
             <thead className="w-full">
               <tr>
                 <th className="text-gray-700 text-left">Title</th>
-                <th className="text-gray-700 text-left">Email</th>
                 <th className="text-gray-700 text-left">Author</th>
-                <th className="text-gray-700 text-center">Posts</th>
+                <th className="text-gray-700 text-left">Category</th>
+                <th className="text-gray-700 text-left">Tags</th>
+                <th className="text-gray-700 text-left">Views</th>
+                <th className="text-gray-700 text-left">Data</th>
               </tr>
             </thead>
             <tbody>
@@ -36,7 +38,6 @@ export default function AdminPosts() {
                   <td className="text-left">{user.username}</td>
                   <td className="text-left">{user.email}</td>
                   <td className="text-left">{user.role}</td>
-                  <td className="text-center">{user.postCount}</td>
                 </tr>
               ))}
             </tbody>
