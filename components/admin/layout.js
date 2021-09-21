@@ -33,7 +33,7 @@ const FixedSideBar = () => (
 
     <style jsx>{`
       .sidebar {
-        width: 10%;
+        width: 12%;
         height: 100%;
         background-color: #29285D;
       }
@@ -64,7 +64,7 @@ export default function AdminLayout({ children }) {
 
         @media only screen and (min-width: 768px) {
           .main {
-            margin-left: 10%;
+            margin-left: 12%;
           }
         }
       `}</style>
