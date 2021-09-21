@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import AdminLayout from "../../components/admin/layout";
 
 export default function AdminUsers({ users }) {
@@ -6,26 +7,44 @@ export default function AdminUsers({ users }) {
       <div>
         <div className="flex items-center gap-x-3">
           <h2 className="text-2xl font-medium">Users</h2>
-          <button>add new</button>
+          <Link href="/"><a className="self-end">add new</a></Link>
         </div>
-        <table className="w-full mt-2">
-          <thead>
-            <tr className="">
-              <th className="text-gray-700">User</th>
-              <th className="text-gray-700">Email</th>
-              <th className="text-gray-700">Função</th>
-              <th className="text-gray-700">Posts</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="">
-              <td>name</td>
-              <td>name</td>
-              <td>name</td>
-              <td>name</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="mt-6 border p-2">
+          <table className="w-full">
+            <thead className="w-full">
+              <tr>
+                <th className="text-gray-700 text-left">User</th>
+                <th className="text-gray-700 text-left">Email</th>
+                <th className="text-gray-700 text-left">Função</th>
+                <th className="text-gray-700 text-center">Posts</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <>
+                  <tr>
+                    <td className="text-left">{user.username}</td>
+                    <td className="text-left">{user.email}</td>
+                    <td className="text-left">{user.role}</td>
+                    <td className="text-center">{user.postCount}</td>
+                  </tr>
+                  <tr>
+                    <td className="text-left">{user.username}</td>
+                    <td className="text-left">{user.email}</td>
+                    <td className="text-left">{user.role}</td>
+                    <td className="text-center">{user.postCount}</td>
+                  </tr>
+                  <tr>
+                    <td className="text-left">{user.username}</td>
+                    <td className="text-left">{user.email}</td>
+                    <td className="text-left">{user.role}</td>
+                    <td className="text-center">{user.postCount}</td>
+                  </tr>
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </AdminLayout>
   )

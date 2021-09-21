@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@uppy/react": "^2.0.3",
     "draft-js": "^0.11.7",
     "formik": "^2.2.9",
     "mongodb": "^4.1.1",

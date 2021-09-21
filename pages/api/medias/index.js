@@ -10,17 +10,32 @@ export const config = {
   }
 }
 
+const upload = multer().single('file')
+
 const handler = async (req, res) => {
   if (req.method === 'GET') {
     const medias = await Media.find()
     res.json(medias)
   } else if (req.method === 'POST') {
-    // create and upload a new media
     const session = await getSession({ req })
     if (!session) return res.status(401).json({ msg: 'Auth required.' })
 
-    fs.writeFile('public/uploads/text.txt', 'testing', (err) => {
-      if (err) console.log(err)
+    upload(req, res, (err) => {
+      const date = new Date()
+      const path = `public/uploads/${date.getFullYear()}/${date.getMonth() + 1}`
+      fs.writeFile(path, req.file.buffer, (err) => {
+        if (err) console.log(err)
+        const media = new Media({
+          title: req.body.title,
+          slug: req.body.slug,
+          originalName: '',
+          description: req.body.description,
+          path: path,
+          url: '',
+          type: ''
+        })
+        res.json(media)
+      })
     })
   }
 }

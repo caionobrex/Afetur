@@ -44,8 +44,11 @@ const FixedSideBar = () => (
 export default function AdminLayout({ children }) {
   return (
     <div>
-      <header className="header text-white px-4 py-2">
+      <header className="header flex justify-between items-center text-white px-4 py-2">
         <Link href="/admin/"><a><BiHome className="text-xl" /></a></Link>
+        <div>
+          <img />
+        </div>
       </header>
 
       <FixedSideBar />

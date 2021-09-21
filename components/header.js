@@ -30,7 +30,7 @@ export default function Header() {
 
       <style jsx>{`
         .header {
-          min-height: 40vh;
+          min-height: 50vh;
           background-color: #29285D;
         }
       `}</style>

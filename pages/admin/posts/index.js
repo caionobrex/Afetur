@@ -2,9 +2,9 @@ import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/client'
 import { useEffect } from 'react'
 import Link from 'next/link'
-import AdminLayout from '../../components/admin/layout'
+import AdminLayout from '../../../components/admin/layout'
 
-export default function AdminPacotes() {
+export default function AdminPosts() {
   const router = useRouter()
   const [session, loading] = useSession()
 
@@ -17,16 +17,16 @@ export default function AdminPacotes() {
     <AdminLayout>
       <div>
         <div className="flex items-center gap-x-3">
-          <h2 className="text-2xl font-medium">Pacotes</h2>
-          <Link href="/"><a className="self-end">add new</a></Link>
+          <h2 className="text-2xl font-medium">Posts</h2>
+          <Link href="/admin/posts/new"><a className="self-end">add new</a></Link>
         </div>
         <div className="mt-6 border p-2">
           <table className="w-full">
             <thead className="w-full">
               <tr>
-                <th className="text-gray-700 text-left">User</th>
+                <th className="text-gray-700 text-left">Title</th>
                 <th className="text-gray-700 text-left">Email</th>
-                <th className="text-gray-700 text-left">Função</th>
+                <th className="text-gray-700 text-left">Author</th>
                 <th className="text-gray-700 text-center">Posts</th>
               </tr>
             </thead>
