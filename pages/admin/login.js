@@ -1,6 +1,7 @@
 import router from 'next/router'
 import { Formik } from "formik"
 import { signIn, useSession } from "next-auth/client"
+import InputField from '../../components/inputField'
 
 export default function AdminLogin() {
   const [session, loading] = useSession()
@@ -8,7 +9,7 @@ export default function AdminLogin() {
   if (session) return router.push('/admin')
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center px-5 gap-y-12" style={{ backgroundColor: '#29285d' }}>
+    <div className="h-screen flex flex-col justify-center items-center px-5 gap-y-4" style={{ backgroundColor: '#29285d' }}>
       <div>
         <img src="https://www.afetur.com.br/wp-content/uploads/2021/09/logo2.png" alt="Logo Afetur Fortaleza" style={{ zIndex: 999 }} />
       </div>
@@ -33,25 +34,23 @@ export default function AdminLogin() {
           handleBlur
         }) => (
           <form className="w-full md:w-96" onSubmit={handleSubmit}>
-            <div className="grid gap-4">
-              <input
-                type="text"
-                name="user"
-                value={values.user}
-                placeholder="Username"
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-              <input
-                type="password"
-                name="pass"
-                value={values.pass}
-                placeholder="Password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </div>
-            <button type="submit" className="bg-blue-900 block w-full mt-6 text-white">
+            <InputField
+              type="text"
+              name="user"
+              label="User"
+              value={values.user}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            <InputField
+              type="password"
+              name="pass"
+              label="Senha"
+              value={values.pass}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            <button type="submit" className="bg-blue-900 block w-full text-white">
               Login
             </button>
           </form>

@@ -3,8 +3,8 @@ import Layout from "../../components/layout"
 
 const PostCard = () => (
   <div>
-    <div>
-      <img src="https://www.afetur.com.br/wp-content/uploads/2021/09/peru-machu-1024x731.jpg" />
+    <div className="w-full h-full">
+      <img src="https://www.afetur.com.br/wp-content/uploads/2021/09/peru-machu-1024x731.jpg" className="object-cover" />
     </div>
     <h1 className="uppercase mt-2 font-bold text-gray-700">Title</h1>
     <span className="text-gray-500 text-sm">12/06</span>

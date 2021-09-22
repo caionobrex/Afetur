@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/client'
 import { useEffect } from 'react'
 import Link from 'next/link'
-import AdminLayout from '../../components/admin/layout'
+import AdminLayout from '../../../components/admin/layout'
 
 export default function AdminPacotes() {
   const router = useRouter()
@@ -18,7 +18,7 @@ export default function AdminPacotes() {
       <div>
         <div className="flex items-center gap-x-3">
           <h2 className="text-2xl font-medium">Pacotes</h2>
-          <Link href="/"><a className="self-end">add new</a></Link>
+          <Link href="/admin/pacotes/new"><a className="self-end">add new</a></Link>
         </div>
         <div className="mt-6 border p-2">
           <table className="w-full">

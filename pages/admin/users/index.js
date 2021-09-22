@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import AdminLayout from "../../components/admin/layout";
+import AdminLayout from "../../../components/admin/layout";
 
 export default function AdminUsers({ users }) {
   return (
@@ -7,7 +7,7 @@ export default function AdminUsers({ users }) {
       <div>
         <div className="flex items-center gap-x-3">
           <h2 className="text-2xl font-medium">Users</h2>
-          <Link href="/"><a className="self-end">add new</a></Link>
+          <Link href="/admin/users/new"><a className="self-end">add new</a></Link>
         </div>
         <div className="mt-6 border p-2">
           <table className="w-full">

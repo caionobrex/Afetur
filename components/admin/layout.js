@@ -54,7 +54,7 @@ export default function AdminLayout({ children }) {
 
       <FixedSideBar />
 
-      <main className="main px-6 py-14 bg-gray-50 min-h-screen">
+      <main className="main px-4 py-14 bg-gray-50 min-h-screen md:px-6">
         {children}
       </main>
 

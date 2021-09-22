@@ -17,16 +17,26 @@ export default function AdminPosts() {
   return (
     <AdminLayout>
       <div>
-        <div className="flex items-center gap-x-3">
-          <h2 className="text-2xl font-medium">New Post</h2>
-        </div>
+        <h2 className="text-2xl font-medium text-gray-700">New Post</h2>
         <div className="mt-4">
-          <form style={{ width: '40%' }}>
+          <form className="w-full md:w-96">
             <InputField  label="Title" />
             <InputField  label="Slug" />
-            <textarea className="border rounded block w-full resize-none focus:outline-none focus:border-none" rows="4" name="summary"></textarea>
-            {/* <select name="category"></select> */}
-            <button className="bg-blue-800 mt-3">Salvar</button>
+            <InputField  label="Tags" />
+            <div>
+              <textarea name="summary" className="border rounded block w-full p-2 resize-none focus:outline-none focus:border-none" rows="3" name="summary" placeholder="Escreva um resumo sobre o post"></textarea>
+            </div>
+            <input type="file" className="my-2" />
+            <select name="category" className="w-full mt-3 border">
+              <option>Categoria</option>
+              <option>Cat 1</option>
+              <option>Cat 2</option>
+            </select>
+            <div className="flex flex-col gap-y-3 mt-3">
+              <input type="radio" name="visibility" />
+              <input type="radio" name="visibility" />
+            </div>
+            <button className="mt-3">Salvar</button>
           </form>
         </div>
       </div>
