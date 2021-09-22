@@ -5,7 +5,7 @@ import { GoFileMedia } from 'react-icons/go'
 import { signOut } from 'next-auth/client'
 
 const FixedSideBar = () => (
-  <div className="sidebar hidden fixed md:flex">
+  <div className="sidebar hidden fixed md:flex mt-10">
     <nav>
       <ul className="flex flex-col gap-y-3 text-white px-4 py-3 font-medium">
         <li>
@@ -44,7 +44,7 @@ const FixedSideBar = () => (
 export default function AdminLayout({ children }) {
   return (
     <div>
-      <header className="header flex justify-between items-center text-white px-4 py-2">
+      <header className="header flex justify-between items-center text-white px-4 py-2 fixed w-full">
         <Link href="/admin/"><a><BiHome className="text-xl" /></a></Link>
         <div>
           username
@@ -54,7 +54,7 @@ export default function AdminLayout({ children }) {
 
       <FixedSideBar />
 
-      <main className="main px-6 py-3 bg-gray-50 min-h-screen">
+      <main className="main px-6 py-14 bg-gray-50 min-h-screen">
         {children}
       </main>
 
