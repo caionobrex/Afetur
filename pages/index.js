@@ -22,7 +22,6 @@ import {
   HiOutlineLocationMarker
 } from 'react-icons/hi'
 import { useState } from 'react'
-import Input from '../components/input'
 
 const Container = ({ children }) => <div className="px-6 md:px-32 2xl:px-96">{children}</div>
 

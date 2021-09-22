@@ -20,7 +20,12 @@ export default function AdminMedias({ medias }) {
   
   return (
     <AdminLayout>
-      <div>{medias.length}</div>
+      <div>
+        <h2>Medias</h2>
+      </div>
+      <div>
+        
+      </div>
     </AdminLayout>
   )
 }

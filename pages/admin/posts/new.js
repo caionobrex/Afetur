@@ -3,6 +3,7 @@ import { useSession } from 'next-auth/client'
 import { useEffect } from 'react'
 import Link from 'next/link'
 import AdminLayout from '../../../components/admin/layout'
+import InputField from '../../../components/inputField'
 
 export default function AdminPosts() {
   const router = useRouter()
@@ -20,12 +21,12 @@ export default function AdminPosts() {
           <h2 className="text-2xl font-medium">New Post</h2>
         </div>
         <div className="mt-4">
-          <form className="flex flex-col" style={{ width: '40%' }}>
-            <input type="text" name="title" className="border" />
-            <input type="text" name="slug" className="border" />
-            <input type="text" name="body" className="border" />
-            <textarea name="summary"></textarea>
-            <select name="category"></select>
+          <form style={{ width: '40%' }}>
+            <InputField  label="Title" />
+            <InputField  label="Slug" />
+            <textarea className="border rounded block w-full resize-none focus:outline-none focus:border-none" rows="4" name="summary"></textarea>
+            {/* <select name="category"></select> */}
+            <button className="bg-blue-800 mt-3">Salvar</button>
           </form>
         </div>
       </div>
